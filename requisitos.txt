@@ -1,0 +1,41 @@
+ESTRUTURA DO BANCO (TABELAS)
+
+$table->foreignIdFor(User::class)->references('id')->on('users');
+
+Schema::table('categories', function(Blueprint $table){
+    $table->dropForeignIdFor(User::class);
+});
+
+- USUARIOS ADMIN
+    -- ID
+    -- USUARIO
+    -- SENHA
+    -- TIPO (ADMIN | NORMAL)
+- MEMBROS
+    -- ID
+    -- NOME
+    -- CARGO_ID
+- CARGOS
+    -- ID
+    -- NOME
+- OFERTAS
+    -- ID
+    -- VALOR
+    -- DATA
+    -- MES
+    -- ANO
+    -- TIPO_CULTO_ID
+- TIPOS CULTOS
+    -- ID
+    -- TIPO (TERÇA | QUINTA | DOMINGO)
+- DIZIMOS
+    -- ID
+    -- VALOR
+    -- MES
+    -- ANO
+    -- USUARIO
+- PROJETOS
+    -- ID
+    -- NOME
+    -- DATA INICIO
+    -- DATA FINAL

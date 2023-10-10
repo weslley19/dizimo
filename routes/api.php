@@ -18,6 +18,10 @@ use App\Http\Controllers\MembersController;
 |
 */
 
+Route::get('/', function () {
+    return 'Olá, mundo!';
+});
+
 Route::group(['middleware' => 'api', 'prefix' => 'auth'], function() {
     Route::post('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/register', [AuthController::class,'register'])->name('register');

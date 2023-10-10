@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dizimo', function (Blueprint $table) {
+        Schema::create('dizimos', function (Blueprint $table) {
             $table->id();
             $table->integer('value');
             $table->integer('month');

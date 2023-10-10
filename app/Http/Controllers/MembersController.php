@@ -9,9 +9,26 @@ use Illuminate\Support\Facades\Validator;
 
 class MembersController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $members = Member::with('cargo')->get();
+        $validator = Validator::make($request->only(['id']), [
+            'id' => ['integer'],
+        ]);
+
+        if ($validator->fails()) {
+            return Response::json(['status' => 'error', 'errors' => $validator->errors()], 422);
+        }
+
+        $id = $request->input('id');
+
+        $members = Member::with('cargo');
+
+        if ($id) {
+            $members = $members->where('id', $id);
+        } else {
+            $members = $members->get();
+        }
+
         return Response::json(['status' => 'success', 'data' => $members], 200);
     }
 

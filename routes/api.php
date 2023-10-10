@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CargosController;
+use App\Http\Controllers\DizimoController;
 use App\Http\Controllers\MembersController;
 
 /*
@@ -40,7 +41,15 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'cargos'], function() {
 
 Route::group(['middleware' => 'auth:api', 'prefix' => 'members'], function() {
     Route::get('/', [MembersController::class, 'index']);
+    Route::get('/{id}', [MembersController::class, 'index']);
     Route::post('/create', [MembersController::class,'create']);
     Route::put('/edit/{id}', [MembersController::class, 'edit']);
     Route::delete('/delete/{id}', [MembersController::class, 'delete']);
+});
+
+Route::group(['middleware' => 'auth:api', 'prefix' => 'dizimos'], function() {
+    Route::get('/', [DizimoController::class, 'index']);
+    Route::post('/create', [DizimoController::class,'create']);
+    Route::put('/edit/{id}', [DizimoController::class, 'edit']);
+    Route::delete('/delete/{id}', [DizimoController::class, 'delete']);
 });
